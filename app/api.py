@@ -1,14 +1,17 @@
 from app import app
 from InvestopediaApi import ita
 from flask import request
+from flask_cors import cross_origin
 import requests
 import random
 
 @app.route('/')
+@cross_origin()
 def index():
   return "nwHacks 2018 - Alex T, Alex L, Clarence L, Felix T :)"
 
 @app.route('/alext', methods=['POST'])
+@cross_origin()
 def alext():
   client = ita.Account(str(request.json['email']), str(request.json['password']))
 
@@ -25,6 +28,7 @@ def alext():
   return "what is the website for amazon.ca"
 
 @app.route('/alexl', methods=['POST'])
+@cross_origin()
 def alexl():
   client = ita.Account(request.json['email'], request.json['password'])
 
@@ -41,6 +45,7 @@ def alexl():
   return "arigatou 4 the house"
 
 @app.route('/clarence', methods=['POST'])
+@cross_origin()
 def clarence():
   client = ita.Account(request.json['email'], request.json['password'])
 
@@ -57,6 +62,7 @@ def clarence():
   return "fresha fresha ya"
 
 @app.route('/felix', methods=['POST'])
+@cross_origin()
 def felix():
   client = ita.Account(request.json['email'], request.json['password'])
 
